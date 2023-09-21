@@ -1,27 +1,24 @@
-
-
 //Referencia al elemento de formulario html
-const formGuardar = document.querySelector("#btn-guardar")
+const formGuardar = document.querySelector("#form-guardar")
 
-formGuardar.addEventListener('submit',async(e)=>{
-    e.preventDefault();
-//Se capturan los datos del formulario
-    const inputTitulo = document.querySelector('#titulo-post').Value;
-    const inputDetalle = document.querySelector('#detalle-post').Value;
+    formGuardar.addEventListener('submit',async(e)=>{
+        e.preventDefault();//Evita que se recargue la pagina cuando se envia el formulario
 
-//Enviar al servidor los datos
-const rsponse = await fetch('nueva-publicacion',{
-    method: 'post',
-    headers: {'Content-Type':"application/json"},
-    body: JSON.stringify({
+    //Se capturan los datos del formulario
+        const titulo = document.querySelector('#titulo-post').value;
+        const descripcion = document.querySelector('#descripcion-post').value;
 
-        titulo: inputTitulo,
-        detalle: inputDetalle
+    //Enviar al servidor los datos
+        const response = await fetch('nueva-publicacion',{
+            method: 'post', // Método HTTP utilizado para la solicitud (en este caso, POST).
+            headers: {'Content-Type':'application/json'},// Cabeceras de la solicitud que indican que se envía un JSON.
+            body: JSON.stringify({titulo,descripcion})
+    // Convierte los datos en formato JSON y los envía como cuerpo de la solicitud.
+        }) 
+
+        const data = await response.json();// Espera a que la respuesta del servidor se convierta en JSON.
+
+        alert(data.msg);
+        console.log(titulo);
+        console.log(descripcion);
     })
-})    
-const data = await response.json();   
-
-
-    console.log(inputTitulo);
-    console.log(inputDetalle);
-})

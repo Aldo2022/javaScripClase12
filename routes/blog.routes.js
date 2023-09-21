@@ -1,24 +1,29 @@
-//las rutas de app.js
-const {Router} = require('express');//Extraemos la clase que hace el enrutamiento
-const Publicacion = require('../models/publicaciones');
+//Importaciones necesarias
+const {Router} = require('express');//Se importa la clase Router de Express
+const { crearPublicacion,obtenerPublicaciones,actualizarPublicacion,eliminarPublicaciones } = require('../controllers/blog.controllers');//Aca se importa
+
+//Creamos una instancia de Router
 const router = Router();
 // const router = require('express').Router();  //Es igual  al anterior
 
-router.get('/', (req, res)=> {      //En esta ruta, se va aaconstruir la pag desde el servidor y devuelve al cliente
-    res.render('home')      //aca pasamos el nombre del archivo para renderizar 'home'
-})
- 
-router.post('/nueva-publicacion', async (req, res)=> {
-    //Recibir datos del body
     
-        const {titulo, detalle}=req.body;
-    
-    // Se guardan los datos en una BD    
-        
-        console.log(titulo, detalle);
-        return res.send({msg: "Publicacion creada con exito"})
-        })    
+    //Creamos una Ruta para la pagina de inicio
+        router.get('/', (req, res)=> {      
+            res.render('home')      //Cuando se accede a la raiz '/' se renderiza la vista 'home'
+        })
 
+    //Aca creamos una nueva publicacion mediante un formulario POST
+        router.post('/publicacion',crearPublicacion)//la logica  de 'crearPublicacion' se encuentra en la carpeta blog.controllers.js    
+
+
+    //Aca obtenemos todas las publicaciones
+        router.get('/publicaciones',obtenerPublicaciones)
+    
+    //Actualizar una piblicacion
+        router.put('/publicacion/:id',actualizarPublicacion)
+
+    //Eliminar publicacion
+        router.delete('/publicacion/:id',eliminarPublicaciones)
    
-
-module.exports=router//Exportando rutas disponibles
+//Exportando rutas disponibles
+module.exports=router//Lo utilizo en app.js   linea 33
