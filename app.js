@@ -26,12 +26,12 @@ app.use(express.json());//Para que el servidor pueda comprender datos json
 app.set('view engine','ejs')//Aca seteamos una variable view engine q va a ser ejs
 
 //archivos staticos-----------------------------------------------
-app.use(express.static(path.join(__dirname, 'public')) )//configuto con express archivos staticos---dirname es un variable q contiene una url de Sis.Oper
+app.use(express.static(path.join(__dirname, 'public')) )//configuro con express archivos staticos---dirname es un variable q contiene una url de Sis.Oper
                                                         //join va a juntar los 2 argumentos
 
 //LAS RUTAS GET , POST SE ENCUENTRAN EN MI ARCHIVO BLOG.ROUTES.JS
 app.use(require('./routes/blog.routes'));
-app.use(require('./routes/user.routes'));
+
 
 //-----------------------------------------------------------------------------
 app.listen(port, ()=> console.log(`Servidor en http://localhost:${port}`))

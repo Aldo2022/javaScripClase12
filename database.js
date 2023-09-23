@@ -9,9 +9,9 @@ const sequelize = new Sequelize('pruebadb', 'root', '', {// Se crea una instanci
 
     try{
       await sequelize.authenticate();
-      console.log('Conexion BD exitosa');
+      console.log('Conexion Base de Datos con exito');
     }catch(error){
-      console.error('Error:', error);  
+      console.error('No se pudo conectar a la Base de Datos:', error);  
     }  
   }
 //Exportación de objetos: Se exportan varios objetos importantes para que puedan ser utilizados en

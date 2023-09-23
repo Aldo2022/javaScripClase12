@@ -6,12 +6,28 @@ const { crearPublicacion,obtenerPublicaciones,actualizarPublicacion,eliminarPubl
 const router = Router();
 // const router = require('express').Router();  //Es igual  al anterior
 
-    
-    //Creamos una Ruta para la pagina de inicio
+//       ******************************************************************************************************** 
+//       *                                           RUTAS RENDER                                               *
+//       ********************************************************************************************************
+
+//Creamos una Ruta para la pagina de inicio
         router.get('/', (req, res)=> {      
             res.render('home')      //Cuando se accede a la raiz '/' se renderiza la vista 'home'
         })
+//Ruta para ver la vista del admin
+        router.get('/admin',(req,res)=>{
+            res.render('admin') 
+        })
+//
+        router.get('/admin/:id',(req,res)=>{
+            res.render('admin',{id:req.params.id})
+        })
 
+
+//       ******************************************************************************************************** 
+//       *                                RUTAS CRUD PARA PUBLICACIONES                                         *
+//       ********************************************************************************************************
+    
     //Aca creamos una nueva publicacion mediante un formulario POST
         router.post('/publicacion',crearPublicacion)//la logica  de 'crearPublicacion' se encuentra en la carpeta blog.controllers.js    
 

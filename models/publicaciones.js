@@ -19,10 +19,14 @@ const Publicacion = sequelize.define('Publicacion',{//el metodo define un arg y 
         allowNull: true,
         defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     },
+    autor: {
+        type: DataTypes.STRING(255),
+        allowNull: true
+    },  
     url_imagen: {
         type: DataTypes.STRING(255),
         allowNull: true
-    }
+    }    
 },{
     tableName:'publicaciones',
     timestamps: false

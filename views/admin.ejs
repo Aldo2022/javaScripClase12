@@ -1,0 +1,45 @@
+
+
+<%-include('partials/header')%>
+<%-include('partials/navbar')%>
+    <h1></h1>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <form id="form-guardar" action="#">
+                    
+                    <div class="mb-3">
+                        <input class="form-control" id="titulo-post" type="text" placeholder="Titulo del Post">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <textarea id="descripcion-post" class="form-control" placeholder="agregue un comentario" id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Comentario</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="datetime-local" name="" id="fecha">
+                     </div>
+ 
+                    <div class="mb-3">
+                         <input class="form-control" id="autor" type="text" placeholder="Autor del Post">
+                    </div>          
+                 
+                    <div class="mb-3">
+                        <input class="form-control" id="url-img" type="text" placeholder="Url imagen">
+                    </div>
+
+                    
+                    <button class="btn btn-primary" id="btn-guardar" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script src="/js/admin.js"></script>    <!--atento a la direccion de donde viene-->
+<%-include('partials/footer')%>

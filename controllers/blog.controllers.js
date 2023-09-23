@@ -4,26 +4,20 @@ const Publicaciones = require('../models/publicaciones');//Se importa el modelo 
 //_____________________________________________________________________________________________________________________________
 //-------POST--------------------------------------CREAR UNA PUBLICACION-------------------------------------------------------
 //_____________________________________________________________________________________________________________________________
-    ctrl.crearPublicacion =  async (req, res)=> {
-        const {
-            titulo,
-            descripcion,
-            fecha,
-            url_imagen
-        }  = req.body;        
-    //Creo una nueva Publicacion en la BD
-        const publicacion = await Publicaciones.create({
-            titulo,
-            descripcion,
-            fecha,
-            url_imagen
-        });
-//ctrl.crearPublicacion =  async (req, res)=> {               -->La linea 6 hasta el 19  es reemplazada por la 20 y la 21
-//    const publicacion = await Publicaciones.create(req.body);
-
-        res.send({
-            msg: "Publicacion creada con exito",publicacion//tengo que escribir 'publicacion' para ver lo que guarde
-        })
+   
+    ctrl.crearPublicacion =  async (req, res)=> {              
+        try{
+            const publicacion = await Publicaciones.create(req.body);
+            res.send({
+                msg: "Publicacion creada con exito",publicacion//tengo que escribir 'publicacion' para ver lo que guarde
+            })
+        }catch(error){
+            console.log(error);
+            return res.status(500).json({
+                msg: "Error al crear nueva publicacion"
+            })
+                
+        }
     }
 //_____________________________________________________________________________________________________________________________
 //----GET-------------------------------------------OBTENER LAS PUBLICACIONES---------------------------------------------------
@@ -69,4 +63,4 @@ const Publicaciones = require('../models/publicaciones');//Se importa el modelo 
     }
 
 
-module.exports = ctrl;//lo utilizo en blog.routes.js linea 3
+module.exports = ctrl;//lo utilizo en blog.routes.js linea

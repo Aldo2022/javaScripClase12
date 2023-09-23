@@ -1,24 +1,39 @@
-//Referencia al elemento de formulario html
-const formGuardar = document.querySelector("#form-guardar")
+const obtenerPublicaciones = async () => {  //
+    const response = await fetch('publicaciones')  //Se realiza una consulta a una ruta y la repuesta lo guardo en formato JSON 
+    const data = response.json(); // luego lo guardo a formato JS
+    return data;//data retorna como una promesa
+}
 
-    formGuardar.addEventListener('submit',async(e)=>{
-        e.preventDefault();//Evita que se recargue la pagina cuando se envia el formulario
+const mostrarPublicaciones = (publicaciones,elementoHtml)=>{
 
-    //Se capturan los datos del formulario
-        const titulo = document.querySelector('#titulo-post').value;
-        const descripcion = document.querySelector('#descripcion-post').value;
+    let registros = "";
 
-    //Enviar al servidor los datos
-        const response = await fetch('nueva-publicacion',{
-            method: 'post', // Método HTTP utilizado para la solicitud (en este caso, POST).
-            headers: {'Content-Type':'application/json'},// Cabeceras de la solicitud que indican que se envía un JSON.
-            body: JSON.stringify({titulo,descripcion})
-    // Convierte los datos en formato JSON y los envía como cuerpo de la solicitud.
-        }) 
+    //Recorremos el El Array publicaciones
+    publicaciones.forEach(publicacion => {
+        registros += `
+            <section class="d-flex gap-2">
+                <img src="${publicacion.url_imagen}" class="rounded" height=200 >
+            <div  class="d-flex flex-column justify-content-between">
+                <h5>${publicacion.titulo}</h5>
+                <p>${publicacion.descripcion}</p>
+                <p>${publicacion.fecha}</p>
+                <p>${publicacion.autor}</p>
+            </div>
+            </section>
+        `
+    });
+    //Se va a crear la lista
+    elementoHtml.innerHTML = registros;
+}
 
-        const data = await response.json();// Espera a que la respuesta del servidor se convierta en JSON.
 
-        alert(data.msg);
-        console.log(titulo);
-        console.log(descripcion);
-    })
+    document.addEventListener('DOMContentLoaded', async()=>{//Creamos un evento cuando se dispare el contenido de la pagina
+        const publicaciones = await obtenerPublicaciones()
+        console.log('publicaciones')
+
+    //Modificamos el DOM para poder mostrar las publicaciones
+        const main = document.querySelector('#lista-publicaciones')
+
+        mostrarPublicaciones(publicaciones,main);
+
+})
