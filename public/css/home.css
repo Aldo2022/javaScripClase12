@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 10px;
+    margin: 2px;
+  
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+
+h1.text-center {
+    color: #000; /* Texto negro */
+    transition: color 0.3s, text-shadow 0.3s; /* Transición suave */
+}
+
+h1.text-center:hover {
+    color: rgba(25, 63, 235, 0.5); /* Color de texto luminoso en hover */
+    text-shadow: 0 0 15px rgba(14, 16, 175, 0.8); /* Sombra de texto luminoso en hover */
+}
+
+.container {
+   background-color: rgb(159, 205, 236);
+
+}

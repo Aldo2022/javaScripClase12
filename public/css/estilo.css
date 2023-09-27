@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 10px;
+    margin: 2px;
+  
+}
+#btn-eliminar{
+   
+    padding: 35px 55px;
+    margin: 150px 150px;
+    color: #ffffff;
+}
+
+.container {
+    
+    background-color: burlywood;
+}
+
+h2.text-center {
+   
+    
+    color: #000; /* Texto negro */
+}
+p.p-el{
+    color: rgb(2, 2, 2);
+    padding: 15px 55px;
+    margin: 50px 60px;
+}
