@@ -1,0 +1,49 @@
+<%-include('partials/header')%>
+<%-include('partials/navbar')%>
+    <h1></h1>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto border rounded p-2">       
+                <h3 class="text-center">Editar Publicacion</h3>
+       
+                <form id="form-editar" action="#" data-id="<%= id %>" >
+            <!--         -->        
+                     <div class="mb-3">
+                        <input id="titulo-post" class="form-control"  type="text" placeholder="Titulo del Post">
+                    </div>
+            <!--         -->        
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <textarea id="descripcion-post" class="form-control" placeholder="Agregue un comentario" id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Comentario</label>
+                        </div>
+                    </div>
+            <!--         -->        
+                    <div class="mb-3">
+                        <input id="fecha" class="form-control" type="date" name="">
+                     </div>
+            <!--         -->         
+                    <div class="mb-3">
+                         <input id="autor" class="form-control"  type="text" placeholder="Autor del Post">
+                    </div>          
+            <!--         -->     
+                    <div class="mb-3">
+                        <input id="url-img" class="form-control"  type="text" placeholder="Url imagen">
+                    </div>
+
+                    <div class="text-center">
+                        <img src="" id="img-preview" class="rounded mx-auto mb-3" style="height:200px; width: 200px">
+                    </div>
+            <!--         -->        
+                    <button id="btn-guardar" class="btn btn-primary w-100"  type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script src="/js/editar-publicacion.js"></script>    <!--atento a la direccion de donde viene-->
+<%-include('partials/footer')%>

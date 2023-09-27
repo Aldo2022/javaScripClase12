@@ -1,5 +1,5 @@
 const obtenerPublicaciones = async () => {  //
-    const response = await fetch('publicaciones')  //Se realiza una consulta a una ruta y la repuesta lo guardo en formato JSON 
+    const response = await fetch('/api/publicaciones')  //Se realiza una consulta a una ruta y la repuesta lo guardo en formato JSON 
     const data = response.json(); // luego lo guardo a formato JS
     return data;//data retorna como una promesa
 }
@@ -16,7 +16,7 @@ const mostrarPublicaciones = (publicaciones,elementoHtml)=>{
             <div  class="d-flex flex-column justify-content-between">
                 <h5>${publicacion.titulo}</h5>
                 <p>${publicacion.descripcion}</p>
-                <p>${publicacion.fecha}</p>
+                <p>publicado el: ${(publicacion.fecha)}</p>
                 <p>${publicacion.autor}</p>
             </div>
             </section>
@@ -29,7 +29,7 @@ const mostrarPublicaciones = (publicaciones,elementoHtml)=>{
 
     document.addEventListener('DOMContentLoaded', async()=>{//Creamos un evento cuando se dispare el contenido de la pagina
         const publicaciones = await obtenerPublicaciones()
-        console.log('publicaciones')
+        console.log(publicaciones)
 
     //Modificamos el DOM para poder mostrar las publicaciones
         const main = document.querySelector('#lista-publicaciones')

@@ -1,0 +1,47 @@
+<%-include('partials/header')%>
+<%-include('partials/navbar')%>
+    <h1></h1>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                
+                <h1 class="text-center">Ingresar Publicacion Nueva</h1>
+                
+                <form id="form-guardar" action="#">
+                    
+                    <div class="mb-3">
+                        <input id="titulo-post" class="form-control"  type="text" placeholder="Titulo del Post">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <div class="form-floating">
+                            <textarea id="descripcion-post" class="form-control" placeholder="Agregue un comentario" id="floatingTextarea"></textarea>
+                            <label for="floatingTextarea">Descripcion</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input id="fecha" class="form-control" type="date" name="" >
+                     </div>
+ 
+                    <div class="mb-3">
+                         <input id="autor" class="form-control"  type="text" placeholder="Autor del Post">
+                    </div>          
+                 
+                    <div class="mb-3">
+                        <input id="url-img" class="form-control"  type="text" placeholder="Url imagen">
+                    </div>
+
+                    
+                    <button id="btn-guardar" class="btn btn-primary"  type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script src="/js/nueva-publicacion.js"></script>    <!--atento a la direccion de donde viene-->
+<%-include('partials/footer')%>

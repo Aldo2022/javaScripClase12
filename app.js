@@ -8,8 +8,8 @@ const path = require('path');
 const { sequelize,conectarDB } = require('./database');         
 sequelize.authenticate()
     .then(()=>console.log('Conexion exitosa'))
-    .catch((error)=>console.log('error a'))
-    // conectarDB();
+    .catch(err => console.log('error al conectar BD:', err))
+  //   conectarDB();
   
 require('dotenv').config();     //Si reemplazamos 
 require('ejs');
@@ -19,7 +19,7 @@ const port = process.env.PORT || 4000; //Este dato se encuentra dentro del archi
 
 //Middelwares--------------------------------------------------
 
-app.use(cors({origin: "http//localhost:3000"}));//origin cualquiera puede realizar peticiones
+app.use(cors());//origin cualquiera puede realizar peticiones
 
 app.use(morgan('dev'));
 app.use(express.json());//Para que el servidor pueda comprender datos json

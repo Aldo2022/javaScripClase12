@@ -1,31 +1,31 @@
-const { DataTypes,Sequelize,sequelize } = require('../database')//importamos del archivo databases
+const { DataTypes,sequelize } = require('../database')//importamos del archivo databases
 
-const Publicacion = sequelize.define('Publicacion',{//el metodo define un arg y un objeto
+const Publicacion = sequelize.define('Publicaciones',{//el metodo define un arg y un objeto
     id:{
         type: DataTypes.INTEGER,//en la bs define el string
         primaryKey: true,
         autoIncrement: true//no permite valores nulos
     },
     titulo:{
-        type: DataTypes.STRING(255),//en la bs define el string
+        type: DataTypes.STRING,//en la bs define el string
         allowNull: false//no permite valores nulos
     },
     descripcion: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING,
         allowNull: false
     },
     fecha: {
         type: DataTypes.DATE,
-        allowNull: true,
-        defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+        allowNull: false,
+ 
     },
     autor: {
-        type: DataTypes.STRING(255),
-        allowNull: true
+        type: DataTypes.STRING,
+        allowNull: false,
     },  
     url_imagen: {
-        type: DataTypes.STRING(255),
-        allowNull: true
+        type: DataTypes.STRING,
+        allowNull: false
     }    
 },{
     tableName:'publicaciones',
